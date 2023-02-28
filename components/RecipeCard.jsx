@@ -4,12 +4,17 @@ import React from "react";
 import pizza from "../assets/pizza.jpg";
 
 const RecipeCard = ({ data }) => {
-    console.log(data.recipe);
+    // console.log(data.recipe);
     const selfLink = data._links.self.href;
     return (
         <Link href="/recipe" className="Wrapper h-72">
             <div className="relative ImageWrapper h-5/6 border-b-2 border-light-green">
-                <Image src={pizza} fill className="object-cover"></Image>
+                <Image
+                    alt={data.recipe.label}
+                    src={data.recipe.image}
+                    fill
+                    className="object-cover"
+                ></Image>
             </div>
             <div className="RecipeName text-center font-light text-sm bg-dark-green h-1/6 flex justify-center items-center">
                 <p>{data.recipe.label}</p>

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import kebab from "../assets/kebab.webp";
 import pasta from "../assets/pasta.jpg";
@@ -18,8 +19,23 @@ const RecipeSectionCard = ({ data }) => {
                 return pasta;
         }
     };
+    const getHref = (name) => {
+        switch (name) {
+            case "Sushi":
+                return "/recipes/sushi";
+            case "Kebab":
+                return "/recipes/kebab";
+            case "Pizza":
+                return "/recipes/pizza";
+            case "Pasta":
+                return "/recipes/pasta";
+        }
+    };
     return (
-        <div className=" flex flex-col h-48 justify-evenly">
+        <Link
+            href={getHref(data.name)}
+            className=" flex flex-col h-48 justify-evenly"
+        >
             <div className=" relative ImageWrapper h-4/5">
                 <Image
                     src={getImage(data.name)}
@@ -30,7 +46,7 @@ const RecipeSectionCard = ({ data }) => {
             <div className="RecipeInfo h-1/5 text-center text-xl font-light bg-dark-green flex justify-center items-center">
                 <p>{data.name}</p>
             </div>
-        </div>
+        </Link>
     );
 };
 
