@@ -2,6 +2,7 @@ import Layout from "@/components/Layout";
 import RecipeCard from "@/components/RecipeCard";
 import SearchInput from "@/components/SearchInput";
 import axios from "axios";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
@@ -35,6 +36,11 @@ const Recipes = (props) => {
         query: queryFilters,
     };
     const handleSearch = () => {
+        // console.log(queryFilters.searchQuery);
+        // console.log(queryFilters.diet);
+        // console.log(queryFilters.cuisineType);
+        // console.log(queryFilters.mealType);
+        // console.log(queryFilters.dishType);
         if (
             queryFilters.searchQuery === "" &&
             queryFilters.diet === "" &&
@@ -62,61 +68,75 @@ const Recipes = (props) => {
             case "Cuisine Type":
                 setQueryFilters({
                     ...queryFilters,
-                    cuisineType: changedValue == "" ? null : changedValue,
+                    cuisineType: changedValue == "" ? "" : changedValue,
                 });
                 break;
             case "Diet":
                 setQueryFilters({
                     ...queryFilters,
-                    diet: changedValue == "" ? null : changedValue,
+                    diet: changedValue == "" ? "" : changedValue,
                 });
                 break;
             case "Meal Type":
                 setQueryFilters({
                     ...queryFilters,
-                    mealType: changedValue == "" ? null : changedValue,
+                    mealType: changedValue == "" ? "" : changedValue,
                 });
                 break;
             case "Dish Type":
                 setQueryFilters({
                     ...queryFilters,
-                    dishType: changedValue == "" ? null : changedValue,
+                    dishType: changedValue == "" ? "" : changedValue,
                 });
                 break;
         }
     };
     return (
-        <Layout>
-            <div className="Wrapper pt-32 pb-6 px-6 min-h-screen bg-dark">
-                <SearchInput
-                    queryFilters={queryFilters}
-                    changeHandler={changeHandler}
-                    handleSearch={handleSearch}
-                    error={error}
-                    setError={setError}
+        <>
+            <Head>
+                <title>Nam-Nam | Recipes</title>
+                <meta
+                    name="description"
+                    content="Food Database with Edamam API"
                 />
-                {!data ? (
-                    <div className="NoData h-full flex w-full justify-center items-center pt-6">
-                        <p>Search something in the input above.</p>
-                    </div>
-                ) : (
-                    <>
-                        <div className="Info py-6 opacity-80">
-                            Displaying from {data.from} to {data.to} of total{" "}
-                            {data.count}
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1"
+                />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
+            <Layout>
+                <div className="Wrapper pt-32 pb-6 px-6 min-h-screen bg-dark">
+                    <SearchInput
+                        queryFilters={queryFilters}
+                        changeHandler={changeHandler}
+                        handleSearch={handleSearch}
+                        error={error}
+                        setError={setError}
+                    />
+                    {!data ? (
+                        <div className="NoData h-full flex w-full justify-center items-center pt-6">
+                            <p>Search something in the input above.</p>
                         </div>
-                        <div className="RecipeContainer grid grid-cols-2  gap-6 ">
-                            {data.hits.map((element) => (
-                                <RecipeCard
-                                    key={element.label}
-                                    data={element}
-                                />
-                            ))}
-                        </div>
-                    </>
-                )}
-            </div>
-        </Layout>
+                    ) : (
+                        <>
+                            <div className="Info py-6 opacity-80">
+                                Displaying from {data.from} to {data.to} of
+                                total {data.count}
+                            </div>
+                            <div className="RecipeContainer grid grid-cols-2  gap-6 ">
+                                {data.hits.map((element) => (
+                                    <RecipeCard
+                                        key={element.label}
+                                        data={element}
+                                    />
+                                ))}
+                            </div>
+                        </>
+                    )}
+                </div>
+            </Layout>
+        </>
     );
 };
 
@@ -150,7 +170,7 @@ export async function getServerSideProps(context) {
             : `&dishType=${context.query.dishType}`;
     const dataFetched = await axios
         .get(
-            `https://api.edamam.com/api/recipes/v2?type=public${searchQuery}${diet}${cuisineType}${mealType}${dishType}&app_id=f8fcabcc&app_key=0da9a134a6f9ec4433fb763b0e306aed`
+            `https://api.edamam.com/api/recipes/v2?type=public${searchQuery}${diet}${cuisineType}${mealType}${dishType}&app_id=${process.env.APP_ID}&app_key=${process.env.APP_KEY}`
         )
         .then((res) => res.data);
 

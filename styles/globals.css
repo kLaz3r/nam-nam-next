@@ -10,3 +10,7 @@ html {
     box-sizing: border-box;
     outline: none;
 }
+.searchIconWhite {
+    filter: invert(87%) sepia(2%) saturate(476%) hue-rotate(236deg)
+        brightness(111%) contrast(94%);
+}

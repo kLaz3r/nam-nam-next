@@ -1,4 +1,6 @@
+import Image from "next/image";
 import React from "react";
+import searchIcon from "../assets/search-icon.svg";
 
 const filters = {
     diet: {
@@ -72,14 +74,16 @@ const SearchInput = ({
     // Object.keys(filters).map((keyName) => {
     //     console.log(queryFilters[keyName]);
     // });
-    const tailwindError = error ? "border-b-2 border-bittersweet" : "";
+    const tailwindError = error
+        ? "border-b-2 border-bittersweet"
+        : "border-b-2 border-transparent";
     const inputPlaceholderValue = error ? "Please input or filter" : "Search";
     const buttonColor = error ? "bg-bittersweet" : "bg-dark-green";
     return (
         <>
             <div className="InputSearch pb-3 w-full flex justify-between">
                 <input
-                    className={`w-full py-2 px-4 border-b-2 border-transparent transition focus:border-b-light-green ${tailwindError}`}
+                    className={`w-full py-2 px-4  transition focus:border-b-light-green ${tailwindError}`}
                     type="text"
                     placeholder={inputPlaceholderValue}
                     id="search"
@@ -92,7 +96,11 @@ const SearchInput = ({
                     className={`${buttonColor} p-2`}
                     type="submit"
                 >
-                    LUPA
+                    <Image
+                        className="max-h-6 object-contain w-16 searchIconWhite"
+                        alt="Search Button"
+                        src={searchIcon}
+                    />
                 </button>
             </div>
             <div className="Filters">
