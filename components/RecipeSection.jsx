@@ -32,7 +32,7 @@ const RecipeSection = () => {
             </div>
             <div className="RecipeCardWrapper grid grid-cols-2 gap-6">
                 {arr.map((element) => (
-                    <RecipeSectionCard data={element} />
+                    <RecipeSectionCard key={element.name} data={element} />
                 ))}
             </div>
         </div>

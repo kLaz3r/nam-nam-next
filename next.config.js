@@ -11,6 +11,11 @@ const nextConfig = {
                 hostname: "edamam-product-images.s3.amazonaws.com",
                 pathname: "/*/*/*",
             },
+            {
+                protocol: "https",
+                hostname: "www.edamam.com",
+                pathname: "/*/*/*",
+            },
         ],
     },
 };

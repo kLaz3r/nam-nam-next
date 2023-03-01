@@ -1,9 +1,8 @@
 import React from "react";
 
-const filters = [
-    {
+const filters = {
+    diet: {
         label: "Diet",
-        name: "diet",
         options: [
             "balanced",
             "high-fiber",
@@ -13,58 +12,55 @@ const filters = [
             "low-sodium",
         ],
     },
-    {
+    cuisineType: {
         label: "Cuisine Type",
-        name: "cuisineType",
         options: [
-            "American",
-            "Asian",
-            "British",
-            "Caribbean",
-            "Central Europe",
-            "Chinese",
-            "Eastern Europe",
-            "French",
-            "Indian",
-            "Italian",
-            "Japanese",
-            "Kosher",
-            "Mediterranean",
-            "Mexican",
-            "Middle Eastern",
-            "Nordic",
-            "South American",
-            "South East Asian",
+            "american",
+            "asian",
+            "british",
+            "caribbean",
+            "central europe",
+            "chinese",
+            "eastern europe",
+            "french",
+            "indian",
+            "italian",
+            "japanese",
+            "kosher",
+            "mediterranean",
+            "mexican",
+            "middle eastern",
+            "nordic",
+            "south american",
+            "south east asian",
         ],
     },
-    {
+    mealType: {
         label: "Meal Type",
-        name: "mealType",
-        options: ["Breakfast", "Dinner", "Lunch", "Snack", "Teatime"],
+        options: ["breakfast", "dinner", "lunch", "snack", "teatime"],
     },
-    {
+    dishType: {
         label: "Dish Type",
-        name: "dishType",
         options: [
-            "Biscuits and Cookies",
-            "Bread",
-            "Cereals",
-            "Condiments and Sauces",
-            "Desserts",
-            "Drinks",
-            "Main Course",
-            "Pancake",
-            "Preps",
-            "Preserve",
-            "Salad",
-            "Sandwiches",
-            "Side dish",
-            "Soup",
-            "Starter",
-            "Sweets",
+            "biscuits and cookies",
+            "bread",
+            "cereals",
+            "condiments and sauces",
+            "desserts",
+            "drinks",
+            "main course",
+            "pancake",
+            "preps",
+            "preserve",
+            "salad",
+            "sandwiches",
+            "side dish",
+            "soup",
+            "starter",
+            "sweets",
         ],
     },
-];
+};
 
 const SearchInput = ({
     handleSearch,
@@ -73,6 +69,9 @@ const SearchInput = ({
     error,
     setError,
 }) => {
+    // Object.keys(filters).map((keyName) => {
+    //     console.log(queryFilters[keyName]);
+    // });
     const tailwindError = error ? "border-b-2 border-bittersweet" : "";
     const inputPlaceholderValue = error ? "Please input or filter" : "Search";
     const buttonColor = error ? "bg-bittersweet" : "bg-dark-green";
@@ -98,26 +97,26 @@ const SearchInput = ({
             </div>
             <div className="Filters">
                 <div className="SelectGridBox grid grid-cols-2 gap-3">
-                    {filters.map((element) => (
+                    {Object.keys(filters).map((keyName) => (
                         <div
-                            key={element.name}
+                            key={filters[keyName].label}
                             className="selectBox flex flex-col"
                         >
                             <label
                                 className="pb-1 opacity-80 text-sm text-light"
-                                htmlFor={element.name}
+                                htmlFor={filters[keyName].label}
                             >
-                                {element.label}:
+                                {filters[keyName].label}:
                             </label>
                             <select
                                 className="px-3 py-2"
-                                name={element.name}
-                                id={element.name}
+                                name={filters[keyName].label}
+                                id={filters[keyName].label}
                                 onChange={(e) => changeHandler(e)}
-                                value={queryFilters[element.name]}
+                                value={queryFilters[keyName]}
                             >
                                 <option value="">None</option>
-                                {element.options.map((option) => (
+                                {filters[keyName].options.map((option) => (
                                     <option
                                         key={option}
                                         className="capitalize"

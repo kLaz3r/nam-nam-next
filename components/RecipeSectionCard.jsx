@@ -22,13 +22,13 @@ const RecipeSectionCard = ({ data }) => {
     const getHref = (name) => {
         switch (name) {
             case "Sushi":
-                return "/recipes/sushi";
+                return "/recipes?searchQuery=sushi&diet=&cuisineType=&mealType=&dishType=";
             case "Kebab":
-                return "/recipes/kebab";
+                return "/recipes?searchQuery=kebab&diet=&cuisineType=&mealType=&dishType=";
             case "Pizza":
-                return "/recipes/pizza";
+                return "/recipes?searchQuery=pizza&diet=&cuisineType=&mealType=&dishType=";
             case "Pasta":
-                return "/recipes/pasta";
+                return "/recipes?searchQuery=pasta&diet=&cuisineType=&mealType=&dishType=";
         }
     };
     return (
@@ -41,6 +41,8 @@ const RecipeSectionCard = ({ data }) => {
                     src={getImage(data.name)}
                     className="object-cover"
                     fill
+                    priority
+                    alt={data.name}
                 />
             </div>
             <div className="RecipeInfo h-1/5 text-center text-xl font-light bg-dark-green flex justify-center items-center">

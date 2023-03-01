@@ -5,7 +5,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
-const recipes = (props) => {
+const Recipes = (props) => {
     const [data, setData] = useState(null);
     useEffect(() => {
         if (props.data !== null) {
@@ -15,13 +15,19 @@ const recipes = (props) => {
         }
     }, [props]);
     const router = useRouter();
-    const [queryFilters, setQueryFilters] = useState({
-        searchQuery: "",
-        diet: "",
-        cuisineType: "",
-        mealType: "",
-        dishType: "",
-    });
+    const [queryFilters, setQueryFilters] = useState(
+        router.query.searchQuery == undefined
+            ? {
+                  searchQuery: "",
+                  diet: "",
+                  cuisineType: "",
+                  mealType: "",
+                  dishType: "",
+              }
+            : {
+                  ...router.query,
+              }
+    );
     const [error, setError] = useState(false);
 
     const routerQuery = {
@@ -53,25 +59,25 @@ const recipes = (props) => {
                     searchQuery: changedValue,
                 });
                 break;
-            case "cuisineType":
+            case "Cuisine Type":
                 setQueryFilters({
                     ...queryFilters,
                     cuisineType: changedValue == "" ? null : changedValue,
                 });
                 break;
-            case "diet":
+            case "Diet":
                 setQueryFilters({
                     ...queryFilters,
                     diet: changedValue == "" ? null : changedValue,
                 });
                 break;
-            case "mealType":
+            case "Meal Type":
                 setQueryFilters({
                     ...queryFilters,
                     mealType: changedValue == "" ? null : changedValue,
                 });
                 break;
-            case "dishType":
+            case "Dish Type":
                 setQueryFilters({
                     ...queryFilters,
                     dishType: changedValue == "" ? null : changedValue,
@@ -101,7 +107,10 @@ const recipes = (props) => {
                         </div>
                         <div className="RecipeContainer grid grid-cols-2  gap-6 ">
                             {data.hits.map((element) => (
-                                <RecipeCard data={element} />
+                                <RecipeCard
+                                    key={element.label}
+                                    data={element}
+                                />
                             ))}
                         </div>
                     </>
@@ -111,7 +120,7 @@ const recipes = (props) => {
     );
 };
 
-export default recipes;
+export default Recipes;
 
 export async function getServerSideProps(context) {
     if (context.query.searchQuery == undefined) {

@@ -1,20 +1,25 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
-import pizza from "../assets/pizza.jpg";
 
 const RecipeCard = ({ data }) => {
-    // console.log(data.recipe);
+    const router = useRouter();
     const selfLink = data._links.self.href;
+    const getLinkFromSelfLink = (selfLink) => {
+        let id = selfLink.match(/\b[0-9a-f]{32}\b/);
+        return `/recipe/${id}`;
+    };
+    getLinkFromSelfLink(selfLink);
+
     let label = "";
-    console.log(data.recipe.label.length > 35);
     if (data.recipe.label.length > 35) {
         label = data.recipe.label.slice(0, 35) + "...";
     } else {
         label = data.recipe.label;
     }
     return (
-        <Link href="/recipe" className="Wrapper h-72">
+        <Link href={getLinkFromSelfLink(selfLink)} className="Wrapper h-72">
             <div className="relative ImageWrapper h-5/6 border-b-2 border-light-green">
                 <Image
                     alt={data.recipe.label}

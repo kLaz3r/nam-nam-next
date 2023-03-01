@@ -8,6 +8,8 @@ const Hero = () => {
             <Image
                 src={bgHero}
                 className="absolute w-full h-full object-cover -z-10 opacity-50"
+                priority
+                alt="Hero Image"
             />
             <div className="border-b-2 border-dark-green pt-24 h-full flex flex-col justify-center px-6 bg-gradient-to-tl from-transparent to-dark">
                 <h1 className="text-4xl text-light font-light">
