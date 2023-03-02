@@ -80,7 +80,7 @@ const SearchInput = ({
     const inputPlaceholderValue = error ? "Please input or filter" : "Search";
     const buttonColor = error ? "bg-bittersweet" : "bg-dark-green";
     return (
-        <>
+        <div className="max-w-xl mx-auto">
             <div className="InputSearch pb-3 w-full flex justify-between">
                 <input
                     className={`w-full py-2 px-4  transition focus:border-b-light-green ${tailwindError}`}
@@ -138,7 +138,7 @@ const SearchInput = ({
                     ))}
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 
