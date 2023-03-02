@@ -2,7 +2,10 @@ import { Head, Html, Main, NextScript } from "next/document";
 
 export default function Document() {
     return (
-        <Html lang="en">
+        <Html
+            className="ScrollSnapContainer snap-y snap-mandatory h-screen"
+            lang="en"
+        >
             <Head>
                 <link
                     rel="apple-touch-icon"

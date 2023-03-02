@@ -4,7 +4,7 @@ import bgHero from "../assets/hero-bg.jpg";
 
 const Hero = () => {
     return (
-        <section className="h-screen">
+        <div className="h-screen snap-start">
             <Image
                 src={bgHero}
                 className="absolute w-full h-full object-cover -z-10 opacity-50"
@@ -20,7 +20,7 @@ const Hero = () => {
                     Find Your Perfect Meal, Anytime, Anywhere with our Food App
                 </h2>
             </div>
-        </section>
+        </div>
     );
 };
 

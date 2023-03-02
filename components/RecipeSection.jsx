@@ -20,7 +20,7 @@ const arr = [
 
 const RecipeSection = () => {
     return (
-        <div className="h-screen bg-dark pt-24 flex flex-col justify-evenly px-6 sm:px-12 md:px-16 lg:px-24">
+        <div className="h-screen snap-start border-b-2 border-dark-green bg-dark pt-24 flex flex-col justify-evenly px-6 sm:px-12 md:px-16 lg:px-24">
             <div className="Text">
                 <div className="SectionTitle text-2xl font-light text-center sm:text-3xl md:text-4xl lg:text-5xl">
                     Cooking Made Easy: Your Go-To Source for Mouth-Watering

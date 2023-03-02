@@ -93,15 +93,15 @@ const LabelsSection = () => {
         });
     };
     return (
-        <>
+        <div className="snap-start">
             <Image
                 src={bgLabels}
                 className="absolute w-full h-full object-cover -z-10 opacity-50"
                 priority
                 alt="Hero Image"
             />
-            <div className="h-screen flex flex-col lg:flex-row-reverse lg:items-center justify-evenly lg:justify-between items-end bg-gradient-to-tr from-transparent to-dark">
-                <div className="Text pt-24 flex flex-col justify-end items-end md:w-2/3 lg:w-1/2 lg:pt-24">
+            <div className="h-screen  border-b-2 border-dark-green flex flex-col lg:flex-row-reverse lg:items-center justify-evenly lg:justify-between items-end bg-gradient-to-tr from-transparent to-dark">
+                <div className="Text pt-24 flex flex-col justify-end items-end md:w-2/3 lg:w-1/2 lg:pt-24 xl:mr-24">
                     <h1 className="Title text-right text-3xl mx-6 text-light xl:text-5xl">
                         Customize Your Diet: Filter Recipes by Your Preferred
                         Labels
@@ -111,7 +111,7 @@ const LabelsSection = () => {
                         Needs and Preferences
                     </h2>
                 </div>
-                <div className="Labels grid grid-cols-2 mx-auto lg:pt-24 xl:mx-24">
+                <div className="Labels  grid grid-cols-2 mx-auto lg:pt-24 xl:ml-24">
                     {Labels.map((element) => (
                         <div
                             key={element.name}
@@ -124,7 +124,7 @@ const LabelsSection = () => {
                     ))}
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 
