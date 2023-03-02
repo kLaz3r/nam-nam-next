@@ -131,7 +131,7 @@ const Recipes = (props) => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Layout>
-                <div className="Wrapper pt-32 pb-6 px-6 min-h-screen bg-dark">
+                <div className="Wrapper pt-32 pb-6 px-6 min-h-screen bg-dark border-b-2 border-dark-green">
                     <SearchInput
                         queryFilters={queryFilters}
                         changeHandler={changeHandler}

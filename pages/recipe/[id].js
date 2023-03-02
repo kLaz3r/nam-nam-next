@@ -52,8 +52,8 @@ const ID = ({ data }) => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Layout>
-                <div className="Wrapper text-light flex flex-col min-h-screen bg-dark pt-24 max-w-lg mx-auto lg:max-w-5xl xl:max-w-none">
-                    <div className="ImageWrapper relative w-1/3 xl:max-w-5xl h-96 max-h-4xl mx-6 xl:mx-auto mt-6">
+                <div className="Wrapper text-light flex flex-col border-b-2 pb-6 border-dark-green min-h-screen bg-dark pt-24 max-w-lg mx-auto lg:max-w-5xl xl:max-w-none">
+                    <div className="ImageWrapper relative md:w-1/3 xl:max-w-5xl h-96 max-h-4xl mx-6 xl:mx-auto mt-6">
                         <Image
                             className="object-cover"
                             src={data.recipe.image}
@@ -62,54 +62,76 @@ const ID = ({ data }) => {
                             alt={data.recipe.label}
                         />
                     </div>
-                    <div className="RecipeInfo mx-6 mt-3 w-full lg:grid grid-cols-3 gap-6 lg:max-w-5xl lg:mx-auto xl:pt-2">
-                        <div className="basicInfo">
+                    <div className="RecipeInfo md:mx-6 mt-3 w-full grid grid-cols-1 gap-6 lg:max-w-5xl lg:mx-auto lg:grid-cols-3 xl:pt-2 lg">
+                        <div className="basicInfo px-6">
                             <h1 className="RecipeLabel pb-4 text-center text-2xl">
                                 {data.recipe.label}
                             </h1>
                             <p className="dishType pt-2 font-light flex flex-row items-center justify-between border-b border-dotted pb-2 border-dark-green">
                                 <span>Dish Type:</span>{" "}
                                 <div className="Labels overflow-hidden">
-                                    {data.recipe.dishType.map((element) => (
-                                        <span
-                                            key={element}
-                                            onClick={(e) => handleClick(e)}
-                                            id="dishType"
-                                            className="capitalize font-normal bg-light-green ml-1 px-2 py-1 text-dark"
-                                        >
-                                            {element}
+                                    {data.recipe.dishType == undefined ? (
+                                        <span className="capitalize font-normal bg-bittersweet ml-1 px-2 py-1 text-dark">
+                                            -
                                         </span>
-                                    ))}
+                                    ) : (
+                                        data.recipe.dishType.map((element) => (
+                                            <span
+                                                key={element}
+                                                onClick={(e) => handleClick(e)}
+                                                id="dishType"
+                                                className="capitalize font-normal bg-light-green ml-1 px-2 py-1 text-dark"
+                                            >
+                                                {element}
+                                            </span>
+                                        ))
+                                    )}
                                 </div>
                             </p>
                             <p className="mealType pt-2 font-light flex flex-row items-center justify-between border-b border-dotted pb-2 border-dark-green">
                                 <span>Meal Type:</span>{" "}
                                 <div className="Labels overflow-hidden">
-                                    {data.recipe.mealType.map((element) => (
-                                        <span
-                                            id="mealType"
-                                            key={element}
-                                            onClick={(e) => handleClick(e)}
-                                            className="capitalize font-normal bg-light-green ml-1 px-2 py-1 text-dark"
-                                        >
-                                            {element}
+                                    {data.recipe.mealType == undefined ? (
+                                        <span className="capitalize font-normal bg-bittersweet ml-1 px-2 py-1 text-dark">
+                                            -
                                         </span>
-                                    ))}
+                                    ) : (
+                                        data.recipe.mealType.map((element) => (
+                                            <span
+                                                id="mealType"
+                                                key={element}
+                                                onClick={(e) => handleClick(e)}
+                                                className="capitalize font-normal bg-light-green ml-1 px-2 py-1 text-dark"
+                                            >
+                                                {element}
+                                            </span>
+                                        ))
+                                    )}
                                 </div>
                             </p>
                             <p className="cuisineType pt-2 font-light flex flex-row items-center justify-between border-b border-dotted pb-2 border-dark-green">
                                 <span>Cuisine Type:</span>{" "}
                                 <div className="Labels overflow-hidden">
-                                    {data.recipe.cuisineType.map((element) => (
-                                        <span
-                                            id="cuisineType"
-                                            key={element}
-                                            onClick={(e) => handleClick(e)}
-                                            className="capitalize font-normal bg-light-green ml-1 px-2 py-1 text-dark"
-                                        >
-                                            {element}
+                                    {data.recipe.cuisineType == undefined ? (
+                                        <span className="capitalize font-normal bg-bittersweet ml-1 px-2 py-1 text-dark">
+                                            -
                                         </span>
-                                    ))}
+                                    ) : (
+                                        data.recipe.cuisineType.map(
+                                            (element) => (
+                                                <span
+                                                    id="cuisineType"
+                                                    key={element}
+                                                    onClick={(e) =>
+                                                        handleClick(e)
+                                                    }
+                                                    className="capitalize font-normal bg-light-green ml-1 px-2 py-1 text-dark"
+                                                >
+                                                    {element}
+                                                </span>
+                                            )
+                                        )
+                                    )}
                                 </div>
                             </p>
                             <p className="dietLabels pt-2 font-light flex flex-row items-center justify-between border-b border-dotted pb-2 border-dark-green">
@@ -186,16 +208,8 @@ const ID = ({ data }) => {
                                     </span>
                                 </div>
                             </p>
-                            <Link
-                                href={data.recipe.url}
-                                className="GoToRecipe drop-shadow-2xl z-50 sticky top-28 w-full text-center mt-2 py-2 text-xl bg-dark-green"
-                            >
-                                <p className="w-full text-center mt-2 py-2 text-xl bg-bittersweet">
-                                    Go To Instructions
-                                </p>
-                            </Link>
                         </div>
-                        <div className="Nutrients">
+                        <div className="Nutrients px-6">
                             <h3 className="text-center text-2xl pt-3 xl:pt-0 pb-4">
                                 Total Nutrients:
                             </h3>
@@ -281,6 +295,14 @@ const ID = ({ data }) => {
                             ))}
                         </div>
                     </div>
+                    <Link
+                        href={data.recipe.url}
+                        className="GoToRecipe drop-shadow-2xl mx-auto max-w-sm z-50 top-28 w-full text-center mt-2 py-2 text-xl"
+                    >
+                        <p className="w-full text-center text-dark mt-2 py-2 text-xl bg-bittersweet">
+                            Go To Instructions
+                        </p>
+                    </Link>
                 </div>
             </Layout>
         </>

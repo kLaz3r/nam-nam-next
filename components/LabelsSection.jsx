@@ -111,13 +111,13 @@ const LabelsSection = () => {
                         Needs and Preferences
                     </h2>
                 </div>
-                <div className="Labels  grid grid-cols-2 mx-auto lg:pt-24 xl:ml-24">
+                <div className="Labels  grid grid-cols-2 mx-auto lg:pt-24 xl:ml-24 gap-6">
                     {Labels.map((element) => (
                         <div
                             key={element.name}
                             id={element.type}
                             onClick={(e) => labelClickHandler(e)}
-                            className="Label px-6 xl:px-9 py-1 xl:py-3 my-3 mx-3 bg-dark-green text-center transition-all active:bg-bittersweet md:text-2xl xl:text-4xl"
+                            className="Label cursor-pointer px-6 xl:px-9 py-1 xl:py-3 bg-dark-green text-center transition-all active:bg-bittersweet md:text-2xl xl:text-4xl"
                         >
                             {element.label}
                         </div>
