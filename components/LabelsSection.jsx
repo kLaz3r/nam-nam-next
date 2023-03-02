@@ -100,24 +100,24 @@ const LabelsSection = () => {
                 priority
                 alt="Hero Image"
             />
-            <div className="h-screen flex flex-col justify-evenly bg-gradient-to-tr from-transparent to-dark">
-                <div className="Text pt-24 flex flex-col justify-center items-end">
-                    <h1 className="Title text-right text-3xl mx-6 text-light">
+            <div className="h-screen flex flex-col lg:flex-row-reverse lg:items-center justify-evenly lg:justify-between items-end bg-gradient-to-tr from-transparent to-dark">
+                <div className="Text pt-24 flex flex-col justify-end items-end md:w-2/3 lg:w-1/2 lg:pt-24">
+                    <h1 className="Title text-right text-3xl mx-6 text-light xl:text-5xl">
                         Customize Your Diet: Filter Recipes by Your Preferred
                         Labels
                     </h1>
-                    <h2 className="Description text-right text-xl mx-6 text-light font-light mt-6 w-2/3 opacity-70">
+                    <h2 className="Description text-right text-xl mx-6 text-light font-light mt-6 w-2/3 opacity-70 xl:text-3xl">
                         Discover Delicious Recipes Tailored to Your Dietary
                         Needs and Preferences
                     </h2>
                 </div>
-                <div className="Labels grid grid-cols-2 mx-auto">
+                <div className="Labels grid grid-cols-2 mx-auto lg:pt-24 xl:mx-24">
                     {Labels.map((element) => (
                         <div
                             key={element.name}
                             id={element.type}
                             onClick={(e) => labelClickHandler(e)}
-                            className="Label px-6 py-1 my-3 mx-3 bg-dark-green text-center transition-all active:bg-bittersweet"
+                            className="Label px-6 xl:px-9 py-1 xl:py-3 my-3 mx-3 bg-dark-green text-center transition-all active:bg-bittersweet md:text-2xl xl:text-4xl"
                         >
                             {element.label}
                         </div>

@@ -34,7 +34,7 @@ const RecipeSectionCard = ({ data }) => {
     return (
         <Link
             href={getHref(data.name)}
-            className=" flex flex-col h-48 justify-evenly bg-dark-green transition-all active:bg-bittersweet"
+            className=" flex flex-col h-48 md:h-56 lg:h-72 xl:h-96 justify-evenly bg-dark-green transition-all active:bg-bittersweet"
         >
             <div className=" relative ImageWrapper h-4/5">
                 <Image
@@ -45,7 +45,7 @@ const RecipeSectionCard = ({ data }) => {
                     alt={data.name}
                 />
             </div>
-            <div className="RecipeInfo h-1/5 text-center text-xl font-light  flex justify-center items-center">
+            <div className="RecipeInfo h-1/5 text-center text-xl xl:text-3xl  font-light  flex justify-center items-center">
                 <p>{data.name}</p>
             </div>
         </Link>
