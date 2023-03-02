@@ -8,6 +8,7 @@ import React, { useEffect, useState } from "react";
 
 const Recipes = (props) => {
     const [data, setData] = useState(null);
+    console.log(props.data);
     useEffect(() => {
         if (props.data !== null) {
             setData(props.data);
@@ -16,6 +17,7 @@ const Recipes = (props) => {
         }
     }, [props]);
     const router = useRouter();
+
     const [queryFilters, setQueryFilters] = useState(
         router.query.searchQuery == undefined
             ? {
@@ -24,9 +26,11 @@ const Recipes = (props) => {
                   cuisineType: "",
                   mealType: "",
                   dishType: "",
+                  _cont: "",
               }
             : {
                   ...router.query,
+                  _cont: "",
               }
     );
     const [error, setError] = useState(false);
@@ -91,6 +95,27 @@ const Recipes = (props) => {
                 break;
         }
     };
+    const nextPageHandler = async () => {
+        if (props.data._links.next.href == undefined) {
+            return "";
+        } else {
+            const link = data._links.next.href;
+            const contID = await link.match(/\b[0-9A-za-z%-]{33,200}\b/);
+            console.log(contID[0]);
+            console.log({
+                ...router.query,
+                _cont: contID[0],
+            });
+            router.push({
+                pathname: "/recipes",
+                query: {
+                    ...router.query,
+                    _cont: contID[0],
+                },
+            });
+        }
+    };
+
     return (
         <>
             <Head>
@@ -132,6 +157,14 @@ const Recipes = (props) => {
                                     />
                                 ))}
                             </div>
+                            {props.data._links.next !== undefined && (
+                                <div
+                                    onClick={nextPageHandler}
+                                    className="NextPage text-center py-3 mt-6 mx-auto bg-bittersweet w-2/3"
+                                >
+                                    Next Page
+                                </div>
+                            )}
                         </>
                     )}
                 </div>
@@ -168,9 +201,14 @@ export async function getServerSideProps(context) {
         context.query.dishType == ""
             ? ""
             : `&dishType=${context.query.dishType}`;
+    const continuation =
+        context.query._cont == "" ? "" : `&_cont=${context.query._cont}`;
+    console.log(
+        `https://api.edamam.com/api/recipes/v2?type=public${searchQuery}${diet}${cuisineType}${mealType}${dishType}${continuation}&app_id=${process.env.APP_ID}&app_key=${process.env.APP_KEY}`
+    );
     const dataFetched = await axios
         .get(
-            `https://api.edamam.com/api/recipes/v2?type=public${searchQuery}${diet}${cuisineType}${mealType}${dishType}&app_id=${process.env.APP_ID}&app_key=${process.env.APP_KEY}`
+            `https://api.edamam.com/api/recipes/v2?type=public${searchQuery}${diet}${cuisineType}${mealType}${dishType}${continuation}&app_id=${process.env.APP_ID}&app_key=${process.env.APP_KEY}`
         )
         .then((res) => res.data);
 
