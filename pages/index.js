@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import LabelsSection from "@/components/LabelsSection";
 import Layout from "@/components/Layout";
 import RecipeSection from "@/components/RecipeSection";
 import Head from "next/head";
@@ -22,6 +23,7 @@ export default function Home() {
             <Layout>
                 <Hero />
                 <RecipeSection />
+                <LabelsSection />
             </Layout>
         </>
     );

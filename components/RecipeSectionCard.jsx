@@ -22,19 +22,19 @@ const RecipeSectionCard = ({ data }) => {
     const getHref = (name) => {
         switch (name) {
             case "Sushi":
-                return "/recipes?searchQuery=sushi&diet=&cuisineType=&mealType=&dishType=";
+                return "/recipes?searchQuery=sushi&diet=&cuisineType=&mealType=&dishType=&_cont=";
             case "Kebab":
-                return "/recipes?searchQuery=kebab&diet=&cuisineType=&mealType=&dishType=";
+                return "/recipes?searchQuery=kebab&diet=&cuisineType=&mealType=&dishType=&_cont=";
             case "Pizza":
-                return "/recipes?searchQuery=pizza&diet=&cuisineType=&mealType=&dishType=";
+                return "/recipes?searchQuery=pizza&diet=&cuisineType=&mealType=&dishType=&_cont=";
             case "Pasta":
-                return "/recipes?searchQuery=pasta&diet=&cuisineType=&mealType=&dishType=";
+                return "/recipes?searchQuery=pasta&diet=&cuisineType=&mealType=&dishType=&_cont=";
         }
     };
     return (
         <Link
             href={getHref(data.name)}
-            className=" flex flex-col h-48 justify-evenly"
+            className=" flex flex-col h-48 justify-evenly bg-dark-green transition-all active:bg-bittersweet"
         >
             <div className=" relative ImageWrapper h-4/5">
                 <Image
@@ -45,7 +45,7 @@ const RecipeSectionCard = ({ data }) => {
                     alt={data.name}
                 />
             </div>
-            <div className="RecipeInfo h-1/5 text-center text-xl font-light bg-dark-green flex justify-center items-center">
+            <div className="RecipeInfo h-1/5 text-center text-xl font-light  flex justify-center items-center">
                 <p>{data.name}</p>
             </div>
         </Link>
