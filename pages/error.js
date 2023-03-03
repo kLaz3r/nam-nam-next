@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 
-const error = () => {
+const Error = () => {
     const router = useRouter();
     console.log(router.query.errorCode);
     return (
@@ -31,4 +31,4 @@ const error = () => {
     );
 };
 
-export default error;
+export default Error;

@@ -40,7 +40,7 @@ const Footer = () => {
 
             <div className="CopyrightText">
                 <div className="ImageWrapper relative h-12 w-full">
-                    <Image src={edamam} fill></Image>
+                    <Image src={edamam} fill alt="Edamam Logo"></Image>
                 </div>
                 <p className="opacity-70 inline-block text-xs w-full text-center">
                     &copy; Copyright 2023, Stefan Nasturas. All rights reserved.{" "}
