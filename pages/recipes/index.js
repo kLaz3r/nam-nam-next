@@ -203,18 +203,26 @@ export async function getServerSideProps(context) {
             : `&dishType=${context.query.dishType}`;
     const continuation =
         context.query._cont == "" ? "" : `&_cont=${context.query._cont}`;
-    console.log(
-        `https://api.edamam.com/api/recipes/v2?type=public${searchQuery}${diet}${cuisineType}${mealType}${dishType}${continuation}&app_id=${process.env.APP_ID}&app_key=${process.env.APP_KEY}`
-    );
-    const dataFetched = await axios
-        .get(
-            `https://api.edamam.com/api/recipes/v2?type=public${searchQuery}${diet}${cuisineType}${mealType}${dishType}${continuation}&app_id=${process.env.APP_ID}&app_key=${process.env.APP_KEY}`
-        )
-        .then((res) => res.data);
-
-    return {
-        props: {
-            data: dataFetched,
-        },
-    };
+    // console.log(
+    //     `https://api.edamam.com/api/recipes/v2?type=public${searchQuery}${diet}${cuisineType}${mealType}${dishType}${continuation}&app_id=${process.env.APP_ID}&app_key=${process.env.APP_KEY}`
+    // );
+    try {
+        const response = await axios
+            .get(
+                `https://api.edamam.com/api/recipes/v2?type=public${searchQuery}${diet}${cuisineType}${mealType}${dishType}${continuation}&app_id=${process.env.APP_ID}&app_key=${process.env.APP_KEY}`
+            )
+            .then((res) => res.data);
+        return {
+            props: {
+                data: response,
+            },
+        };
+    } catch (error) {
+        console.log(error.code);
+        return {
+            redirect: {
+                destination: `/error?errorCode=${error.code}`,
+            },
+        };
+    }
 }

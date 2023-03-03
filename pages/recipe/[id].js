@@ -7,9 +7,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import placeholder from "../../assets/placeholder.png";
 
-const ID = ({ data }) => {
-    console.log(data);
-
+const ID = ({ data, error }) => {
     const router = useRouter();
     const defaultQuery = {
         searchQuery: "",
@@ -17,6 +15,7 @@ const ID = ({ data }) => {
         cuisineType: "",
         mealType: "",
         dishType: "",
+        _cont: "",
     };
     const handleClick = (e) => {
         let newQuery = {
@@ -80,7 +79,7 @@ const ID = ({ data }) => {
                                                 key={element}
                                                 onClick={(e) => handleClick(e)}
                                                 id="dishType"
-                                                className="capitalize font-normal bg-light-green ml-1 px-2 py-1 text-dark"
+                                                className="capitalize cursor-pointer font-normal bg-light-green ml-1 px-2 py-1 text-dark"
                                             >
                                                 {element}
                                             </span>
@@ -101,7 +100,7 @@ const ID = ({ data }) => {
                                                 id="mealType"
                                                 key={element}
                                                 onClick={(e) => handleClick(e)}
-                                                className="capitalize font-normal bg-light-green ml-1 px-2 py-1 text-dark"
+                                                className="capitalize cursor-pointer font-normal bg-light-green ml-1 px-2 py-1 text-dark"
                                             >
                                                 {element}
                                             </span>
@@ -125,7 +124,7 @@ const ID = ({ data }) => {
                                                     onClick={(e) =>
                                                         handleClick(e)
                                                     }
-                                                    className="capitalize font-normal bg-light-green ml-1 px-2 py-1 text-dark"
+                                                    className="capitalize cursor-pointer font-normal bg-light-green ml-1 px-2 py-1 text-dark"
                                                 >
                                                     {element}
                                                 </span>
@@ -150,7 +149,7 @@ const ID = ({ data }) => {
                                                     onClick={(e) =>
                                                         handleClick(e)
                                                     }
-                                                    className="capitalize font-normal bg-light-green ml-1 px-2 py-1 text-dark"
+                                                    className="capitalize cursor-pointer font-normal bg-light-green ml-1 px-2 py-1 text-dark"
                                                 >
                                                     {element}
                                                 </span>
@@ -314,20 +313,28 @@ export default ID;
 export async function getServerSideProps(context) {
     if (context.query.id == undefined) {
         return {
-            props: {
-                error: true,
+            redirect: {
+                destination: "/error",
             },
         };
     }
-    const fetchedData = await axios
-        .get(
-            `https://api.edamam.com/api/recipes/v2/${context.query.id}?type=public&app_id=${process.env.APP_ID}&app_key=${process.env.APP_KEY}`
-        )
-        .then((res) => res.data);
-    // console.log("fetched data", fetchedData);
-    return {
-        props: {
-            data: fetchedData,
-        },
-    };
+    try {
+        const response = await axios
+            .get(
+                `https://api.edamam.com/api/recipes/v2/${context.query.id}?type=public&app_id=${process.env.APP_ID}&app_key=${process.env.APP_KEY}`
+            )
+            .then((res) => res.data);
+        return {
+            props: {
+                data: response,
+            },
+        };
+    } catch (error) {
+        console.log(error.code);
+        return {
+            redirect: {
+                destination: `/error?errorCode=${error.code}`,
+            },
+        };
+    }
 }
