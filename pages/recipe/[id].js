@@ -66,9 +66,9 @@ const ID = ({ data, error }) => {
                             <h1 className="RecipeLabel pb-4 text-center text-2xl">
                                 {data.recipe.label}
                             </h1>
-                            <p className="dishType pt-2 font-light flex flex-row items-center justify-between border-b border-dotted pb-2 border-dark-green">
+                            <div className="dishType pt-2 font-light flex flex-row items-center justify-between border-b border-dotted pb-2 border-dark-green">
                                 <span>Dish Type:</span>{" "}
-                                <div className="Labels overflow-hidden">
+                                <div className="Labels flex justify-end flex-row flex-wrap gap-1">
                                     {data.recipe.dishType == undefined ? (
                                         <span className="capitalize font-normal bg-bittersweet ml-1 px-2 py-1 text-dark">
                                             -
@@ -79,17 +79,17 @@ const ID = ({ data, error }) => {
                                                 key={element}
                                                 onClick={(e) => handleClick(e)}
                                                 id="dishType"
-                                                className="capitalize cursor-pointer font-normal bg-light-green ml-1 px-2 py-1 text-dark"
+                                                className="capitalize cursor-pointer font-normal bg-light-green px-2 py-1 text-dark"
                                             >
                                                 {element}
                                             </span>
                                         ))
                                     )}
                                 </div>
-                            </p>
-                            <p className="mealType pt-2 font-light flex flex-row items-center justify-between border-b border-dotted pb-2 border-dark-green">
+                            </div>
+                            <div className="mealType pt-2 font-light flex flex-row items-center justify-between border-b border-dotted pb-2 border-dark-green">
                                 <span>Meal Type:</span>{" "}
-                                <div className="Labels overflow-hidden">
+                                <div className="Labels flex justify-end flex-row flex-wrap gap-1">
                                     {data.recipe.mealType == undefined ? (
                                         <span className="capitalize font-normal bg-bittersweet ml-1 px-2 py-1 text-dark">
                                             -
@@ -100,17 +100,17 @@ const ID = ({ data, error }) => {
                                                 id="mealType"
                                                 key={element}
                                                 onClick={(e) => handleClick(e)}
-                                                className="capitalize cursor-pointer font-normal bg-light-green ml-1 px-2 py-1 text-dark"
+                                                className="capitalize cursor-pointer font-normal bg-light-green px-2 py-1 text-dark"
                                             >
                                                 {element}
                                             </span>
                                         ))
                                     )}
                                 </div>
-                            </p>
-                            <p className="cuisineType pt-2 font-light flex flex-row items-center justify-between border-b border-dotted pb-2 border-dark-green">
+                            </div>
+                            <div className="cuisineType pt-2 font-light flex flex-row items-center justify-between border-b border-dotted pb-2 border-dark-green">
                                 <span>Cuisine Type:</span>{" "}
-                                <div className="Labels overflow-hidden">
+                                <div className="Labels flex justify-end flex-row flex-wrap gap-1">
                                     {data.recipe.cuisineType == undefined ? (
                                         <span className="capitalize font-normal bg-bittersweet ml-1 px-2 py-1 text-dark">
                                             -
@@ -124,7 +124,7 @@ const ID = ({ data, error }) => {
                                                     onClick={(e) =>
                                                         handleClick(e)
                                                     }
-                                                    className="capitalize cursor-pointer font-normal bg-light-green ml-1 px-2 py-1 text-dark"
+                                                    className="capitalize cursor-pointer font-normal bg-light-green px-2 py-1 text-dark"
                                                 >
                                                     {element}
                                                 </span>
@@ -132,10 +132,10 @@ const ID = ({ data, error }) => {
                                         )
                                     )}
                                 </div>
-                            </p>
-                            <p className="dietLabels pt-2 font-light flex flex-row items-center justify-between border-b border-dotted pb-2 border-dark-green">
+                            </div>
+                            <div className="dietLabels pt-2 font-light flex flex-row items-center justify-between border-b border-dotted pb-2 border-dark-green">
                                 <span>Diet Labels:</span>{" "}
-                                <div className="Labels overflow-hidden">
+                                <div className="Labels flex justify-end flex-row flex-wrap gap-1">
                                     {data.recipe.dietLabels.length === 0 ? (
                                         <span className="capitalize font-normal bg-bittersweet ml-1 px-2 py-1 text-dark">
                                             -
@@ -149,7 +149,7 @@ const ID = ({ data, error }) => {
                                                     onClick={(e) =>
                                                         handleClick(e)
                                                     }
-                                                    className="capitalize cursor-pointer font-normal bg-light-green ml-1 px-2 py-1 text-dark"
+                                                    className="capitalize cursor-pointer font-normal bg-light-green px-2 py-1 text-dark"
                                                 >
                                                     {element}
                                                 </span>
@@ -157,16 +157,16 @@ const ID = ({ data, error }) => {
                                         )
                                     )}
                                 </div>
-                            </p>
-                            <p className="calories pt-2 font-light flex flex-row items-center justify-between border-b border-dotted pb-2 border-dark-green">
+                            </div>
+                            <div className="calories pt-2 font-light flex flex-row items-center justify-between border-b border-dotted pb-2 border-dark-green">
                                 <span>Calories:</span>{" "}
                                 <div className="Labels overflow-hidden">
                                     <span>
                                         {Math.floor(data.recipe.calories)}
                                     </span>
                                 </div>
-                            </p>
-                            <p className="cautions pt-2 font-light flex flex-row items-center justify-between border-b border-dotted pb-2 border-dark-green">
+                            </div>
+                            <div className="cautions pt-2 font-light flex flex-row items-center justify-between border-b border-dotted pb-2 border-dark-green">
                                 <span>Cautions:</span>{" "}
                                 <div className="Labels overflow-hidden">
                                     {data.recipe.cautions.length === 0 ? (
@@ -182,31 +182,31 @@ const ID = ({ data, error }) => {
                                         ))
                                     )}
                                 </div>
-                            </p>
-                            <p className="totalTime pt-2 font-light flex flex-row items-center justify-between border-b border-dotted pb-2 border-dark-green">
+                            </div>
+                            <div className="totalTime pt-2 font-light flex flex-row items-center justify-between border-b border-dotted pb-2 border-dark-green">
                                 <span>Time to Prepare:</span>{" "}
                                 <div className="Labels overflow-hidden">
                                     <span className="ml-1">
                                         {data.recipe.totalTime} min
                                     </span>
                                 </div>
-                            </p>
-                            <p className="totalWeight pt-2 font-light flex flex-row items-center justify-between border-b border-dotted pb-2 border-dark-green">
+                            </div>
+                            <div className="totalWeight pt-2 font-light flex flex-row items-center justify-between border-b border-dotted pb-2 border-dark-green">
                                 <span>Weight:</span>{" "}
                                 <div className="Labels overflow-hidden">
                                     <span className="ml-1">
                                         {Math.floor(data.recipe.totalWeight)} g
                                     </span>
                                 </div>
-                            </p>
-                            <p className="yield pt-2 font-light flex flex-row items-center justify-between border-b border-dotted pb-2 border-dark-green">
+                            </div>
+                            <div className="yield pt-2 font-light flex flex-row items-center justify-between border-b border-dotted pb-2 border-dark-green">
                                 <span>Yield:</span>{" "}
                                 <div className="Labels overflow-hidden">
                                     <span className="ml-1">
                                         {data.recipe.yield}
                                     </span>
                                 </div>
-                            </p>
+                            </div>
                         </div>
                         <div className="Nutrients px-6">
                             <h3 className="text-center text-2xl pt-3 xl:pt-0 pb-4">
