@@ -79,7 +79,7 @@ const ID = ({ data, error }) => {
                                                 key={element}
                                                 onClick={(e) => handleClick(e)}
                                                 id="dishType"
-                                                className="capitalize cursor-pointer font-normal bg-light-green px-2 py-1 text-dark"
+                                                className="capitalize hover:bg-bittersweet transition-all hover:text-light cursor-pointer font-normal bg-light-green px-2 py-1 text-dark"
                                             >
                                                 {element}
                                             </span>
@@ -100,7 +100,7 @@ const ID = ({ data, error }) => {
                                                 id="mealType"
                                                 key={element}
                                                 onClick={(e) => handleClick(e)}
-                                                className="capitalize cursor-pointer font-normal bg-light-green px-2 py-1 text-dark"
+                                                className="capitalize hover:bg-bittersweet transition-all hover:text-light cursor-pointer cursor-pointer font-normal bg-light-green px-2 py-1 text-dark"
                                             >
                                                 {element}
                                             </span>
@@ -124,7 +124,7 @@ const ID = ({ data, error }) => {
                                                     onClick={(e) =>
                                                         handleClick(e)
                                                     }
-                                                    className="capitalize cursor-pointer font-normal bg-light-green px-2 py-1 text-dark"
+                                                    className="capitalize hover:bg-bittersweet transition-all hover:text-light cursor-pointer cursor-pointer font-normal bg-light-green px-2 py-1 text-dark"
                                                 >
                                                     {element}
                                                 </span>
@@ -149,7 +149,7 @@ const ID = ({ data, error }) => {
                                                     onClick={(e) =>
                                                         handleClick(e)
                                                     }
-                                                    className="capitalize cursor-pointer font-normal bg-light-green px-2 py-1 text-dark"
+                                                    className="capitalize hover:bg-bittersweet transition-all hover:text-light cursor-pointer cursor-pointer font-normal bg-light-green px-2 py-1 text-dark"
                                                 >
                                                     {element}
                                                 </span>

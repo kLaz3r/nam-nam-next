@@ -160,7 +160,7 @@ const Recipes = (props) => {
                             {props.data._links.next !== undefined && (
                                 <div
                                     onClick={nextPageHandler}
-                                    className="NextPage text-center py-3 mt-6 mx-auto bg-bittersweet w-2/3 max-w-sm"
+                                    className="NextPage cursor-pointer hover:bg-dark-green transition text-center py-3 mt-6 mx-auto bg-bittersweet w-2/3 max-w-sm"
                                 >
                                     Next Page
                                 </div>

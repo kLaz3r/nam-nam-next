@@ -33,7 +33,7 @@ const Footer = () => {
                 <Link href="https://www.linkedin.com/in/stefan-nasturas-9bb019207/">
                     <LinkedInLogoIcon className="h-full w-full text-dark-green hover:text-bittersweet active:text-bittersweet transition-all" />
                 </Link>
-                <Link href="https://stefan-nasturas.netlify.app/">
+                <Link href="https://stefannasturas.live">
                     <PersonIcon className="h-full w-full text-dark-green hover:text-bittersweet active:text-bittersweet transition-all" />
                 </Link>
             </div>

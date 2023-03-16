@@ -93,7 +93,7 @@ const SearchInput = ({
                 />
                 <button
                     onClick={handleSearch}
-                    className={`${buttonColor} p-2`}
+                    className={`${buttonColor} p-2 hover:bg-bittersweet transition`}
                     type="submit"
                 >
                     <Image

@@ -19,8 +19,11 @@ const RecipeCard = ({ data }) => {
         label = data.recipe.label;
     }
     return (
-        <Link href={getLinkFromSelfLink(selfLink)} className="Wrapper h-72">
-            <div className="relative ImageWrapper h-5/6 border-b-2 border-light-green">
+        <Link
+            href={getLinkFromSelfLink(selfLink)}
+            className="group Wrapper h-72"
+        >
+            <div className="relative ImageWrapper h-5/6 border-b-2 border-light-green group-hover:border-bittersweet transition-all">
                 <Image
                     alt={data.recipe.label}
                     src={data.recipe.image}
@@ -28,7 +31,7 @@ const RecipeCard = ({ data }) => {
                     className="object-cover"
                 ></Image>
             </div>
-            <div className="RecipeName overflow-clip text-center font-light text-sm bg-dark-green h-1/6 flex justify-center items-center">
+            <div className="RecipeName overflow-clip text-center font-light text-sm bg-dark-green transition-all group-hover:bg-bittersweet h-1/6 flex justify-center items-center">
                 <p className="px-3">{label}</p>
             </div>
         </Link>

@@ -117,7 +117,7 @@ const LabelsSection = () => {
                             key={element.name}
                             id={element.type}
                             onClick={(e) => labelClickHandler(e)}
-                            className="Label cursor-pointer px-6 xl:px-9 py-1 xl:py-3 bg-dark-green text-center transition-all active:bg-bittersweet md:text-2xl xl:text-4xl"
+                            className="Label cursor-pointer px-6 xl:px-9 py-1 xl:py-3 bg-dark-green text-center transition-all active:bg-bittersweet hover:bg-bittersweet md:text-2xl xl:text-4xl"
                         >
                             {element.label}
                         </div>
