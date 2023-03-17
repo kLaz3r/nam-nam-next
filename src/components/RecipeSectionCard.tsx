@@ -51,7 +51,7 @@ const RecipeSectionCard = ({ data }: RecipeSectionCardProps) => {
         />
       </div>
       <div className="RecipeInfo flex h-1/5 items-center justify-center  text-center  text-xl font-light xl:text-3xl">
-        <p>{data.name}</p>
+        <h6>{data.name}</h6>
       </div>
     </Link>
   );

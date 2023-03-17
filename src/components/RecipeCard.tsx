@@ -5,9 +5,10 @@ import { type Hit } from "~/pages/recipes";
 
 type RecipeCardProps = {
   data: Hit;
+  index: number;
 };
 
-const RecipeCard = ({ data }: RecipeCardProps) => {
+const RecipeCard = ({ data, index }: RecipeCardProps) => {
   const selfLink = data._links.self.href;
   const getLinkFromSelfLink = (selfLink: string) => {
     const id = selfLink.match(/\b[0-9a-f]{32}\b/);
@@ -33,6 +34,7 @@ const RecipeCard = ({ data }: RecipeCardProps) => {
           alt={data.recipe.label}
           src={data.recipe.image}
           fill
+          priority={index < 3 ? true : false}
           className="object-cover"
         ></Image>
       </div>

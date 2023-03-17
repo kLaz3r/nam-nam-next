@@ -158,9 +158,9 @@ const ID = ({ data }: Props) => {
               alt={data.recipe.label}
             />
           </div>
-          <div className="RecipeInfo lg mt-3 grid w-full grid-cols-1 gap-6 md:mx-6 lg:mx-auto lg:max-w-5xl lg:grid-cols-3 xl:pt-2">
-            <div className="basicInfo px-6">
-              <h1 className="RecipeLabel pb-4 text-center text-2xl">
+          <div className="RecipeInfo lg mt-3 grid w-full grid-cols-1 gap-6 drop-shadow-lg md:mx-6 lg:mx-auto lg:max-w-5xl lg:grid-cols-3 xl:pt-2">
+            <div className="basicInfo px-6 drop-shadow-lg">
+              <h1 className="RecipeLabel pb-4 text-center text-2xl drop-shadow-lg">
                 {data.recipe.label}
               </h1>
               <div className="dishType flex flex-row items-center justify-between border-b border-dotted border-dark-green pt-2 pb-2 font-light">
@@ -236,7 +236,6 @@ const ID = ({ data }: Props) => {
                   ) : (
                     data.recipe.dietLabels.map((element) => (
                       <span
-                        id="diet"
                         key={element}
                         onClick={(e) => handleClick(e)}
                         className="cursor-pointer  bg-light-green px-2 py-1 font-normal capitalize text-dark transition-all hover:bg-bittersweet hover:text-light"

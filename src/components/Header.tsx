@@ -11,6 +11,7 @@ const Header = () => {
           className="h-auto w-40 object-contain"
           src="/assets/logo.png"
           fill
+          priority
         ></Image>
       </Link>
       <span className="flex flex-col text-end text-light sm:flex-row sm:gap-12">

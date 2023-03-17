@@ -298,14 +298,18 @@ const Recipes = (props: Props) => {
                 Displaying from {data.from} to {data.to} of total {data.count}
               </div>
               <div className="RecipeContainer grid grid-cols-1 gap-6  sm:grid-cols-2  md:grid-cols-4 2xl:grid-cols-5">
-                {data.hits?.map((element) => (
-                  <RecipeCard key={element.label} data={element} />
+                {data.hits?.map((element, index) => (
+                  <RecipeCard
+                    index={index}
+                    key={element.label}
+                    data={element}
+                  />
                 ))}
               </div>
               {props.data?._links.next !== undefined && (
                 <div
                   onClick={nextPageHandler}
-                  className="NextPage mx-auto mt-6 w-2/3 max-w-sm cursor-pointer bg-bittersweet py-3 text-center transition hover:bg-dark-green"
+                  className="NextPage mx-auto mt-6 w-2/3 max-w-sm cursor-pointer bg-bittersweet py-3 text-center drop-shadow-lg transition hover:bg-dark-green"
                 >
                   Next Page
                 </div>
