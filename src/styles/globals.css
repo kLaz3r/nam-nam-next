@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  color: #f3eff5;
+}
+
+.searchIconWhite {
+  filter: invert(87%) sepia(2%) saturate(476%) hue-rotate(236deg)
+    brightness(111%) contrast(94%);
+}
